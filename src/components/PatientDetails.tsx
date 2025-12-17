@@ -1,15 +1,55 @@
-import { Patient } from '../types/index';
+import { Patient } from "../types/index";
+import PatientDetailItem from "./PatientDetailItem";
 
 type PatientDetailsProps = {
-  patient: Patient
+  patient: Patient;
 };
 
-export default function PatientDetails({patient} : PatientDetailsProps) {
+export default function PatientDetails({ patient }: PatientDetailsProps) {
   return (
-    <div>
-      {
-        patient.name
-      }
+    <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-xl">
+      {/* <p className="font-bold mb-3 text-gray-700 uppercase">
+        ID: {""}
+        <span className="font-normal normal-case">{patient.id}</span>
+      </p>
+
+      <p className="font-bold mb-3 text-gray-700 uppercase">
+        Nombre: {""}
+        <span className="font-normal normal-case">{patient.name}</span>
+      </p>
+
+      <p className="font-bold mb-3 text-gray-700 uppercase">
+        Propietario: {""}
+        <span className="font-normal normal-case">{patient.caretaker}</span>
+      </p>
+
+      <p className="font-bold mb-3 text-gray-700 uppercase">
+        Email: {""}
+        <span className="font-normal normal-case">{patient.email}</span>
+      </p>
+
+      <p className="font-bold mb-3 text-gray-700 uppercase">
+        Fecha Alta: {""}
+        <span className="font-normal normal-case">{patient.date}</span>
+      </p>
+
+      <p className="font-bold mb-3 text-gray-700 uppercase">
+        Síntomas: {""}
+        <span className="font-normal normal-case">{patient.symptoms}</span>
+      </p> */}
+
+      {/* Se sustituyen los parráfos por un COMPONENTE para reutilizarlos */}
+      <PatientDetailItem label="ID" data={patient.id} />
+
+      <PatientDetailItem label="Nombre" data={patient.name} />
+
+      <PatientDetailItem label="Propietario" data={patient.caretaker} />
+
+      <PatientDetailItem label="Email" data={patient.email} />
+
+      <PatientDetailItem label="Fecha Alta" data={patient.date.toString()} />
+
+      <PatientDetailItem label="Síntomas" data={patient.symptoms} />
     </div>
-  )
-};
+  );
+}
