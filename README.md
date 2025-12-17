@@ -31,3 +31,5 @@
   - **_npm i --save-dev @types/uuid_**
 - Redux
   - **_npm install zustand-middleware_**
+- React Toastify - Alertas
+  - **_npm i react-toastify_**
