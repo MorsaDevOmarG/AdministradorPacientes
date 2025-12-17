@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import type { DraftPatient, Patient } from "./types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,45 +20,50 @@ const createPatient = (patient: DraftPatient): Patient => {
 };
 
 export const usePatientStore = create<PatientState>()(
-  devtools((set) => ({
-    patients: [],
-    activeId: "",
-    addPatient: (data) => {
-      // console.log(data);
+  devtools(
+    persist((set) => ({
+      patients: [],
+      activeId: "",
+      addPatient: (data) => {
+        // console.log(data);
 
-      const newPatient = createPatient(data);
+        const newPatient = createPatient(data);
 
-      set((state) => ({
-        // patients: [...state.patients, data]
-        patients: [...state.patients, newPatient],
-      }));
-    },
-    deletePatient: (id) => {
-      // console.log(id);
+        set((state) => ({
+          // patients: [...state.patients, data]
+          patients: [...state.patients, newPatient],
+        }));
+      },
+      deletePatient: (id) => {
+        // console.log(id);
 
-      set((state) => ({
-        patients: state.patients.filter((patient) => patient.id !== id),
-      }));
-    },
-    getPatientById: (id) => {
-      // console.log(id);
+        set((state) => ({
+          patients: state.patients.filter((patient) => patient.id !== id),
+        }));
+      },
+      getPatientById: (id) => {
+        // console.log(id);
 
-      set(() => ({
-        activeId: id,
-      }));
-    },
-    updatePatient: (data) => {
-      set((state) => ({
-        patients: state.patients.map((patient) =>
-          patient.id === state.activeId
-            ? {
+        set(() => ({
+          activeId: id,
+        }));
+      },
+      updatePatient: (data) => {
+        set((state) => ({
+          patients: state.patients.map((patient) =>
+            patient.id === state.activeId
+              ? {
                 id: state.activeId,
                 ...data,
               }
-            : patient
-        ),
-        activeId: ''
-      }));
-    },
-  }))
-);
+              : patient
+          ),
+          activeId: ''
+        }));
+      },
+    }), {
+      name: 'patient-storage',
+      // storage: createJSONStorage(() => sessionStorage)
+      // storage: createJSONStorage(() => localStorage)
+    }))
+  );

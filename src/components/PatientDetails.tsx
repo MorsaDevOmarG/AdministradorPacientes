@@ -81,7 +81,7 @@ export default function PatientDetails({ patient }: PatientDetailsProps) {
 
           //   toast.success('Paciente Eliminado Correctamente')
           // }}
-          onClick={() => handleClick(patient.id)}
+          onClick={handleClick}
         >
           Eliminar
         </button>
