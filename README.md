@@ -29,3 +29,5 @@
 - Generador de ID'S
   - **_npm i uuid_**
   - **_npm i --save-dev @types/uuid_**
+- Redux
+  - **_npm install zustand-middleware_**
