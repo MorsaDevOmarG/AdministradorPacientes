@@ -26,3 +26,6 @@
     - _ZOD_
   - Instalación:
     - **_npm i react-hook-form_**
+- Generador de ID'S
+  - **_npm i uuid_**
+  - **_npm i --save-dev @types/uuid_**
