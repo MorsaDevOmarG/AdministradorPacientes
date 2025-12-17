@@ -33,3 +33,4 @@
   - **_npm install zustand-middleware_**
 - React Toastify - Alertas
   - **_npm i react-toastify_**
+  - _https://fkhadra.github.io/react-toastify/introduction/_
